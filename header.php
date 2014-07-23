@@ -1,9 +1,22 @@
 <?php 
     ob_start();
     session_start();
-    //error_reporting(E_ALL);
-    ini_set("display_errors",0);
+    error_reporting(E_ALL);
+    ini_set("display_errors",2);
+    date_default_timezone_set("UTC");
     include_once 'constants.php';
+    include_once BASE_DIR . '/config/database.php';
+    include_once BASE_DIR . '/classes/Auth.php';
+    include_once BASE_DIR . '/classes/Helper.php';
+
+    if(!Auth::check()){
+        $requestURI = $_SERVER["REQUEST_URI"];
+        $requestURI = explode("?", $requestURI)[0];
+        if(!strpos($requestURI, "login.php") && !strpos($requestURI, "signUp.php")){
+           $url = BASE_PATH . $requestURI;
+           exit(header("Location: $url"));
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>

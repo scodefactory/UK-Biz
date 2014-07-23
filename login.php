@@ -1,19 +1,40 @@
-<?php 
+<?php
 include_once "header.php";
 
-if(isset($_REQUEST['submit'])) {
-    $_SESSION['userType'] = $_REQUEST['userType'];
-    $url = BASE_PATH . '/employers/index.php';
+if(Auth::check()){
+    if(Auth::user()->type == "ADMIN"){
+        $url = BASE_PATH . '/viewEmployers.php';
+    }
+    else{
+        $url = BASE_PATH . '/viewJobs.php';
+    }
     exit(header("Location: $url"));
+}
+if(isset($_POST['submit'])) {
+      $user_name = $_POST["userName"];
+      $password = $_POST["password"];
+      $user_type = $_POST["userType"];
+      if(Auth::authenticate($user_name, $password, $user_type)){
+          if(Auth::user()->type == "ADMIN"){
+              $url = BASE_PATH . '/viewEmployers.php';
+          }
+          else{
+              $url = BASE_PATH . '/viewJobs.php';
+          }
+          
+          exit(header("Location: $url"));
+      }
+      else{
+          $message = Auth::getMessage();
+     }
+    
 }
 if(isset($_REQUEST['signup'])) {
     $_SESSION['userType'] = "";
-    $url = BASE_PATH . '/employers/signUp.php';
+    $url = BASE_PATH . '/signUp.php';
     exit(header("Location: $url"));
 }
 ?>
-    
-
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -22,6 +43,11 @@ if(isset($_REQUEST['signup'])) {
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
+                        <?php if(isset($message) && $message): ?>
+                            <div class="alert alert-danger">
+                                <?php echo $message; ?>
+                            </div>
+                        <?php endif;  ?>
                         <form role="form" action="login.php" method="POST" id="login">
                             <fieldset>
                                 <div class="form-group">

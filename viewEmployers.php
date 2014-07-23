@@ -33,7 +33,23 @@ include_once "header.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="odd gradeX">
+                                        <?php 
+                                            $employers = Employer::all();
+                                            foreach($employers as $employer):
+                                        ?>
+                                            <tr class="odd gradeX">
+                                                <td><?php echo $employer->user->name; ?></td>
+                                                <td><?php echo $employer->contact_person; ?></td>
+                                                <td><?php echo $employer->industry->name; ?></td>
+                                                <td><a href="employerPostedJobs.php?employer_id=<?php echo $employer->id; ?>" >Posted Jobs</a></td>
+                                                <td><a href="#">Edit</a></td>
+                                                <td><a href="#">Active</a></td>
+                                                <td><a href="#">Remove</a></td>
+                                            </tr>
+                                        <?php
+                                            endforeach;
+                                        ?>
+                                        <!-- <tr class="odd gradeX">
                                             <td>ABC PVT. LTD</td>
                                             <td>Rupesh Kumar 1</td>
                                             <td>HR</td>
@@ -149,8 +165,7 @@ include_once "header.php";
                                             <td><a href="#">Edit</a></td>
                                             <td><a href="#">Active</a></td>
                                             <td><a href="#">Remove</a></td>
-                                        </tr>
-
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

@@ -53,16 +53,13 @@
 
 
 		public static function hashPassword($raw_password){
-			$options = [
-			    'cost' => 11,
-			    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-			];
-			return password_hash($raw_password, PASSWORD_BCRYPT, $options);
+			$hashed_password = crypt($raw_password);
+			return $hashed_password;
 		}
 
 
 		public function checkPassword($raw_password){
-			return password_verify($raw_password, $this->password);
+			return (crypt($raw_password, $this->password) == $this->password);
 		}
 
 

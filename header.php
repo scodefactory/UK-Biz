@@ -54,10 +54,10 @@
  
 
     $userType ="";
-    if(isset($_SESSION['userType'])){
-         $userType = $_SESSION['userType'];
+    if(isset(Auth::user()->type)){
+         $userType = Auth::user()->type;
     }
-    print_r($userType);
+
     if($userType == "ADMIN")
         include_once "navigationAdmin.php";
     if ($userType == "EMPLOYER")

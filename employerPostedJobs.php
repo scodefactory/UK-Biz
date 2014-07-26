@@ -1,6 +1,7 @@
 <?php 
 $title = "View Jobs";
 include_once "header.php";
+
 ?>
     <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <div id="page-wrapper">
@@ -33,7 +34,24 @@ include_once "header.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="gradeA">
+                                        <?php 
+                                            $employer_id = $_GET["employer_id"];
+                                            $employerJobs  = Job::all(array("conditions" => array("employer_id" =>$employer_id)));
+                                        ?>
+                                        <?php foreach($employerJobs as $job): ?>
+                                            <tr class="gradeA">
+                                                <td><?php echo $job->title; ?></td>
+                                                <td><?php echo $job->experience; ?></td>
+                                                <td><?php echo $job->description; ?></td>
+                                                <td class="center"><?php echo $job->publish_date; ?></td>
+                                                <td class="center"><?php echo $job->expiry_date; ?></td>
+                                                <td><a href="#">Edit</a></td>
+                                                <td><a href="#">Active</a></td>
+                                                <td><a href="#">Remove</a></td>
+                                            </tr>
+
+                                        <?php endforeach; ?>
+                                        <!-- <tr class="gradeA">
                                             <td>Software Eng</td>
                                             <td>2+</td>
                                             <td>Candidate should have exp with PHP and CodeIgniter</td>
@@ -113,7 +131,7 @@ include_once "header.php";
                                             <td class="center">16 Jun 2014</td>
                                             <td><a href="#">Active</a></td>
                                             <td><a href="#">Remove</a></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

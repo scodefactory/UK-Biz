@@ -5,7 +5,7 @@
  	{
 	     $cfg->set_model_directory(BASE_DIR . '/classes/models');
 	     $cfg->set_connections(array(
-	        	'development' => 'mysql://root:root@localhost/employers-db'
+	        	'development' => 'mysql://root@localhost/employers-db'
         	));
  	});
 ?>

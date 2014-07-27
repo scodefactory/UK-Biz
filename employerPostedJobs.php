@@ -1,7 +1,12 @@
 <?php 
 $title = "View Jobs";
 include_once "header.php";
-
+if(isset($_GET["employer_id"])){
+    $employer_id  = $_GET["employer_id"];
+}
+else{
+    $employer_id = "------";
+}
 ?>
     <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <div id="page-wrapper">
@@ -29,13 +34,13 @@ include_once "header.php";
                                             <th>Job Description</th>
                                             <th>Publish Date</th>
                                             <th>Expiry Date</th>
+                                            <th>Edit</th>
                                             <th>Status</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
-                                            $employer_id = $_GET["employer_id"];
                                             $employerJobs  = Job::all(array("conditions" => array("employer_id" =>$employer_id)));
                                         ?>
                                         <?php foreach($employerJobs as $job): ?>

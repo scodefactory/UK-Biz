@@ -1,5 +1,6 @@
 <?php
 	class Job extends ActiveRecord\Model{
+		static $table_name = "listjobs";
 		static $belongs_to = array(
 			array(
 				"Employer"

@@ -17,6 +17,9 @@
            exit(header("Location: $url"));
         }
     }
+      function paramExists($search_array, $param_name){
+          return (isset($search_array[$param_name]) && !empty($search_array[$param_name]));
+      }
 ?>
 <!DOCTYPE html>
 <html>

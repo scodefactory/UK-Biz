@@ -50,9 +50,16 @@ else{
                                                 <td><?php echo $job->description; ?></td>
                                                 <td class="center"><?php echo $job->publish_date; ?></td>
                                                 <td class="center"><?php echo $job->expiry_date; ?></td>
-                                                <td><a href="/editJob.php?id=<?php echo $job->id; ?>">Edit</a></td>
-                                            <td><a href="/changeJobStatus.php?id=<?php echo $job->id; ?>"><?php echo $job->status == true ? "Active" : "Inactive"; ?></a></td>
-                                            <td><a href="/deleteJob.php?id=<?php echo $job->id; ?>">Remove</a></td>
+
+                                                <?php 
+                                                    $editJobURL = BASE_PATH . "/editJob.php?id=" . $job->id;
+                                                    $changeJobStatusURL = BASE_PATH . "/changeJobStatus.php?id=" . $job->id;
+                                                    $deleteJobURL = BASE_PATH . "/deleteJob.php?id=" . $job->id;
+                                                ?>
+                                                
+                                                <td><a href="<?php echo $editJobURL; ?>">Edit</a></td>
+                                                <td><a href="<?php echo $changeJobStatusURL; ?>"><?php echo $job->status == true ? "Active" : "Inactive"; ?></a></td>
+                                                <td><a href="<?php echo $deleteJobURL; ?>">Remove</a></td>
                                             </tr>
 
                                         <?php endforeach; ?>

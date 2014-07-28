@@ -52,7 +52,7 @@
 	  	}
 
 	  	function before_save(){
-	  		if($this->password){
+	  		if($this->password && $this->password_confirmation){
 	  			$this->password = $this->hashPassword($this->password);
 	  		}
 	  	}

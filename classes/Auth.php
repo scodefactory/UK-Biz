@@ -38,8 +38,14 @@
 			if($user){
 				if($user->checkPassword($password)){
 					if($user->type == $user_type){
-						Auth::setUser($user);
-						return true;
+						if($user->status == true){
+							Auth::setUser($user);
+							return true;
+						}
+						else{
+							Auth::setMessage("Inactive Account, Please contact Administrator!");
+							return false;
+						}
 					}
 					else{
 						Auth::setMessage("Please select correct user type");

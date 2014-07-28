@@ -183,7 +183,7 @@
                      <div class="form-group">
                         <div class="row">
                             <div class="col-sm-12">
-                            <button type="submit" class="btn btn-default btn-success" name="submit">Sign Up</button>
+                            <button type="submit" class="btn btn-default btn-success" name="submit">Save</button>
                         </div>
                     </div>
                 </form>

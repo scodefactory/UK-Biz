@@ -1,5 +1,5 @@
 <?php 
-$title = "View Candidates";
+$title = "View Employers";
 include_once "header.php";
 ?>
     <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
@@ -36,15 +36,16 @@ include_once "header.php";
                                         <?php 
                                             $employers = Employer::all();
                                             foreach($employers as $employer):
+                                                $user = $employer->user;
                                         ?>
                                             <tr class="odd gradeX">
                                                 <td><?php echo $employer->user->name; ?></td>
                                                 <td><?php echo $employer->contact_person; ?></td>
                                                 <td><?php echo $employer->industry->name; ?></td>
                                                 <td><a href="employerPostedJobs.php?employer_id=<?php echo $employer->id; ?>" >Posted Jobs</a></td>
-                                                <td><a href="#">Edit</a></td>
-                                                <td><a href="#">Active</a></td>
-                                                <td><a href="#">Remove</a></td>
+                                                <td><a href="/editEmployer.php?id=<?php echo $employer->id; ?>">Edit</a></td>
+                                                <td><a href="/changeEmployerStatus.php?id=<?php echo $employer->id; ?>"><?php echo $user->status == true ? "Active" : "Inactive"; ?></a></td>
+                                                <td><a href="/deleteEmployer.php?id=<?php echo $employer->id;  ?>">Remove</a></td>
                                             </tr>
                                         <?php
                                             endforeach;

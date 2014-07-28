@@ -18,8 +18,7 @@
 		static $validates_presence_of = array(
 			array('name', "message" => "Field can not be blank!"),
 			array('email', "message" => "Field can not be blank!"),
-			array('user_name', "message" => "Field can not be blank!"),
-			array('password', "message" => "Field can not be blank!")
+			array('user_name', "message" => "Field can not be blank!")
 		);
 
 
@@ -39,10 +38,17 @@
 
 		public function validate() 
 		{
-		     if ($this->password != $this->password_confirmation)
-	      	{
-		       $this->errors->add('password', "Password and Confirm Password fields does not match!");
-		     }
+			if(!isset($this->id)){
+				if(trim($this->password) == ""){
+					$this->errors->add('password', "Password Field cannot be blank");
+				}
+				else{
+					if ($this->password != $this->password_confirmation)
+		      		{
+			      		$this->errors->add('password', "Password and Confirm Password fields does not match!");
+				     	}
+				}
+			}
 	  	}
 
 	  	function before_save(){

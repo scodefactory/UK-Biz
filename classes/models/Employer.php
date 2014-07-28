@@ -14,5 +14,11 @@
 				"Industry"
 			),
 		);
+
+		static $has_many = array(
+			array(
+				"Job"
+			),
+		);
 	}
 ?>

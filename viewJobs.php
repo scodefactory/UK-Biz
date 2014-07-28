@@ -245,9 +245,9 @@
 											<td><?php echo $job->description; ?></td>
 											<td class="center"><?php echo $job->publish_date; ?></td>
 											<td class="center"><?php echo $job->expiry_date; ?></td>
-											<td><a href="#">Edit</a></td>
-											<td><a href="#">Active</a></td>
-											<td><a href="#">Remove</a></td>
+											<td><a href="/editJob.php?id=<?php echo $job->id; ?>">Edit</a></td>
+											<td><a href="/changeJobStatus.php?id=<?php echo $job->id; ?>"><?php echo $job->status == true ? "Active" : "Inactive"; ?></a></td>
+											<td><a href="/deleteJob.php?id=<?php echo $job->id; ?>">Remove</a></td>
 										</tr>
 									<?php
 									endforeach;

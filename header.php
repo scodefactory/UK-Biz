@@ -13,7 +13,7 @@
         $requestURI = $_SERVER["REQUEST_URI"];
         $requestURI = explode("?", $requestURI)[0];
         if(!strpos($requestURI, "login.php") && !strpos($requestURI, "signUp.php")){
-           $url = BASE_PATH . $requestURI;
+           $url = BASE_PATH . "/login.php";
            exit(header("Location: $url"));
         }
     }

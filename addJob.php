@@ -217,7 +217,6 @@ include_once "header.php";
                                 </div>
                             </div>    
                         </div>
-                        </div>
                         <?php if($job->errors && $job->errors->on('expiry_date')): ?>
                             <div class="row">
                                 <div class="col-sm-12 text-danger">
@@ -228,7 +227,7 @@ include_once "header.php";
                             </div>
                         <?php endif; ?>
                     </div>
-                    <button type="submit" name="submit" class="btn btn-default btn-success">Save Job</button>
+                           <button type="submit" name="submit" class="btn btn-default btn-success">Save Job</button>
                 </form>
                 </div>
             </div>

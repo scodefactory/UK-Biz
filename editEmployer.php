@@ -199,12 +199,12 @@
                                 <input class="form-control" placeholder="Confirm Password" name="user[password_confirmation]" type="password" value="">
                         </div>
                     </div>
-
+                    </div>
                      <div class="form-group">
                         <div class="row">
                             <div class="col-sm-12">
                             <label>&nbsp;</label>
-                            <button type="submit" class="btn btn-default btn-success" name="submit">Update</button>
+                            <button type="submit" class="btn btn-default btn-success submit-button" name="submit">Update</button>
                         </div>
                     </div>
                 </form>

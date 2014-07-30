@@ -243,8 +243,8 @@
 											<td><?php echo $job->title; ?></td>
 											<td><?php echo $job->experience; ?></td>
 											<td><?php echo $job->description; ?></td>
-											<td class="center"><?php echo $job->publish_date; ?></td>
-											<td class="center"><?php echo $job->expiry_date; ?></td>
+											<td class="center"><?php echo date("d-M-Y", strtotime($job->publish_date));  ?></td>
+											<td class="center"><?php echo date("d-M-Y", strtotime($job->expiry_date));  ?></td>
 											<?php 
 												$editJobURL = BASE_PATH . "/editJob.php?id=" . $job->id;
 												$changeJobStatusURL = BASE_PATH . "/changeJobStatus.php?id=" . $job->id;
@@ -313,5 +313,14 @@ include_once "footer.php";
             showToday: true,
             useCurrent: true,
         });
+
+        $("#publishDateFrom").on("dp.change",function (e) {
+        	console.log('changed');
+               $('#publishDateTo').data("DateTimePicker").setMinDate(e.date);
+            });
+        $("#expiryDateFrom").on("dp.change",function (e) {
+        	console.log('changed');
+               $('#expiryDateTo').data("DateTimePicker").setMinDate(e.date);
+            });
     });
 </script>

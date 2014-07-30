@@ -164,6 +164,7 @@
                                 <input class="form-control" placeholder="Confirm Password" name="confirmPassword" type="password" value="">
                         </div>
                     </div>
+                    </div>
                     <!--<div class="form-group">
                         <label>Publish Date</label>
                         <div class='input-group date' id='publishDate' data-date-format="DD MMM YYYY">

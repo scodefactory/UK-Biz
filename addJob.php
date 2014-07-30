@@ -217,6 +217,7 @@ include_once "header.php";
                                 </div>
                             </div>    
                         </div>
+                        </div>
                         <?php if($job->errors && $job->errors->on('expiry_date')): ?>
                             <div class="row">
                                 <div class="col-sm-12 text-danger">
